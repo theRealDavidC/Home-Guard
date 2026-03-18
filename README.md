@@ -1,4 +1,4 @@
-# HomeGuard — ESP32 Night Motion Alarm
+# HomeGuard ESP32 Night Motion Alarm
 
 Triggers a siren alarm when motion is detected at night.
 
@@ -30,10 +30,10 @@ Triggers a siren alarm when motion is detected at night.
 
 All tunable values are in `include/config.h`:
 
-- `DARK_THRESHOLD`     — raise to trigger in brighter conditions
-- `ALARM_DURATION_MS`  — how long the siren runs
-- `PIR_WARMUP_MS`      — set to 0 during development to skip the 30s wait
-- `MOTION_COOLDOWN_MS` — minimum gap between consecutive triggers
+- `DARK_THRESHOLD`     - raise to trigger in brighter conditions
+- `ALARM_DURATION_MS`  - how long the siren runs
+- `PIR_WARMUP_MS`      - set to 0 during development to skip the 30s wait
+- `MOTION_COOLDOWN_MS` - minimum gap between consecutive triggers
 
 ---
 
