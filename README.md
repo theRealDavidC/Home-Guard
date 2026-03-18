@@ -1,0 +1,44 @@
+# HomeGuard — ESP32 Night Motion Alarm
+
+Triggers a siren alarm when motion is detected at night.
+
+---
+
+## Wiring
+
+| Component         | ESP32 Pin | Notes                          |
+|-------------------|-----------|--------------------------------|
+| PIR OUT           | GPIO 13   | VCC → 5V, GND → GND           |
+| Buzzer (+)        | GPIO 14   | Use passive buzzer (not active)|
+| LED Red (+)       | GPIO 2    | 220Ω resistor to GND           |
+| LED Green (+)     | GPIO 4    | 220Ω resistor to GND           |
+| LDR (one leg)     | GPIO 34   | Other leg → GND, 10kΩ to 3.3V |
+
+---
+
+## How It Works
+
+1. On boot the system waits 30s for the PIR sensor to warm up
+2. Green LED = system armed and monitoring
+3. Every loop: checks if it is dark (LDR) AND motion is detected (PIR)
+4. If both conditions are true → siren plays 3 sweep cycles and red LED flashes
+5. After 10 seconds the alarm auto-resets and returns to monitoring
+
+---
+
+## Adjusting Sensitivity
+
+All tunable values are in `include/config.h`:
+
+- `DARK_THRESHOLD`     — raise to trigger in brighter conditions
+- `ALARM_DURATION_MS`  — how long the siren runs
+- `PIR_WARMUP_MS`      — set to 0 during development to skip the 30s wait
+- `MOTION_COOLDOWN_MS` — minimum gap between consecutive triggers
+
+---
+
+## Recommended Hardware
+
+- **PIR sensor**: HC-SR501 or HC-SR602
+- **Buzzer**: Passive piezo buzzer (required for tone variation)
+- **LDR**: Standard 5mm light-dependent resistor with 10kΩ pull-up
