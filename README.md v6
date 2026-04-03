@@ -1,4 +1,4 @@
-# HomeGuard ESP32 Night Motion Alarm
+# HomeGuard ESP32 Night Motion Alarm.
 
 Triggers a siren alarm when motion is detected at night.
 
